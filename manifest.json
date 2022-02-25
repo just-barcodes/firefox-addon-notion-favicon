@@ -1,0 +1,13 @@
+{
+    "name": "notion-favicon",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
+    "content_scripts": [
+        {
+            "matches": ["https://www.notion.so/*"],
+            "js": ["src/fix_favicon.js"],
+            "run_at": "document_end"
+        }
+    ]
+}
