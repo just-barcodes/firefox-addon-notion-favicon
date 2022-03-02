@@ -1,5 +1,8 @@
-function fix_favicon(){
+function fix_favicon() {
     document.querySelector("link[rel='shortcut icon']").href = "https://notion.so/images/favicon.ico";
 }
 
-setInterval(fix_favicon, 3000);
+let interval = browser.storage.sync.get("interval");
+interval.then(function(result) {
+    setInterval(fix_favicon, result.interval || 6000);
+});

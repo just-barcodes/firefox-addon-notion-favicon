@@ -1,6 +1,6 @@
 {
     "name": "notion-favicon",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "manifest_version": 2,
     "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
     "content_scripts": [
@@ -9,5 +9,15 @@
             "js": ["src/fix_favicon.js"],
             "run_at": "document_end"
         }
-    ]
+    ],
+    "permissions": ["storage"],
+    "options_ui": {
+        "page": "src/options.html",
+        "browser_style": true
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{514fe486-8401-47a5-8b47-1bfbd1a927e8}"
+        }
+    }
 }
