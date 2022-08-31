@@ -7,7 +7,7 @@ the icon for the page whenever you visit it.
 This addon always displays the default Notion favicon instead of switching the
 favicon to the icon of the currently activated page.
 
-This addon is publised here:
+This addon is published here:
 https://addons.mozilla.org/en-US/firefox/addon/static-notion-favicon/
 
 ## TODOs
