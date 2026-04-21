@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8"/>
+        <title>Static Notion Favicon – Options</title>
     </head>
 
     <body>
         <form class="browser-style">
-            <label>Favicon update interval in ms</label>
-            <input type="number" id="interval" min="500" max="60000"/>
+            <label for="faviconUrl">Custom favicon URL</label>
+            <input type="url" id="faviconUrl" placeholder="https://notion.so/images/favicon.ico"/>
             <button class="browser-style" type="submit">Save</button>
         </form>
+        <p id="status"></p>
         <script src="options.js"></script>
     </body>
 </html>
