@@ -1,8 +1,32 @@
-function fix_favicon() {
-    document.querySelector("link[rel='shortcut icon']").href = "https://notion.so/images/favicon.ico";
+const DEFAULT_FAVICON_URL = "https://notion.so/images/favicon.ico";
+
+function makeFixFavicon(faviconUrl) {
+    return function fixFavicon() {
+        const link = document.querySelector("link[rel='shortcut icon'], link[rel='icon']");
+        if (link && link.href !== faviconUrl) {
+            link.href = faviconUrl;
+        }
+    };
 }
 
-let interval = browser.storage.sync.get("interval");
-interval.then(function(result) {
-    setInterval(fix_favicon, result.interval || 6000);
-});
+if (typeof browser !== "undefined") {
+    browser.storage.sync.get({ faviconUrl: DEFAULT_FAVICON_URL }).then((result) => {
+        const fixFavicon = makeFixFavicon(result.faviconUrl);
+
+        fixFavicon();
+
+        const observer = new MutationObserver(fixFavicon);
+        if (document.head) {
+            observer.observe(document.head, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ["href"],
+            });
+        }
+    });
+}
+
+if (typeof module !== "undefined") {
+    module.exports = { makeFixFavicon, DEFAULT_FAVICON_URL };
+}
