@@ -29,5 +29,11 @@ function restoreOptions() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", restoreOptions);
-document.querySelector("form").addEventListener("submit", saveOptions);
+document.addEventListener("DOMContentLoaded", () => {
+    restoreOptions();
+    document.querySelector("form").addEventListener("submit", saveOptions);
+});
+
+if (typeof module !== "undefined") {
+    module.exports = { saveOptions, restoreOptions, DEFAULT_FAVICON_URL };
+}

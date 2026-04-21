@@ -6,6 +6,9 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Build artifacts
-*.zip
-*.xpi
+# Dependencies
+node_modules/
+package-lock.json
+
+# Coverage reports
+coverage/

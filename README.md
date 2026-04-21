@@ -21,6 +21,15 @@ To load it temporarily in Firefox:
 2. Click **Load Temporary Add-on…**
 3. Select the `manifest.json` file in the repository root
 
+## Testing
+
+Unit tests cover `fix_favicon.js` and `options.js` using [Jest](https://jestjs.io/) with a jsdom environment.
+
+```bash
+npm install
+npm test
+```
+
 ## TODOs
 
 - Create an icon for this addon.

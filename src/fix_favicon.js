@@ -9,18 +9,24 @@ function makeFixFavicon(faviconUrl) {
     };
 }
 
-browser.storage.sync.get({ faviconUrl: DEFAULT_FAVICON_URL }).then((result) => {
-    const fixFavicon = makeFixFavicon(result.faviconUrl);
+if (typeof browser !== "undefined") {
+    browser.storage.sync.get({ faviconUrl: DEFAULT_FAVICON_URL }).then((result) => {
+        const fixFavicon = makeFixFavicon(result.faviconUrl);
 
-    fixFavicon();
+        fixFavicon();
 
-    const observer = new MutationObserver(fixFavicon);
-    if (document.head) {
-        observer.observe(document.head, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ["href"],
-        });
-    }
-});
+        const observer = new MutationObserver(fixFavicon);
+        if (document.head) {
+            observer.observe(document.head, {
+                childList: true,
+                subtree: true,
+                attributes: true,
+                attributeFilter: ["href"],
+            });
+        }
+    });
+}
+
+if (typeof module !== "undefined") {
+    module.exports = { makeFixFavicon, DEFAULT_FAVICON_URL };
+}
