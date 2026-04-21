@@ -2,7 +2,16 @@ const DEFAULT_FAVICON_URL = "https://notion.so/images/favicon.ico";
 
 function saveOptions(e) {
     e.preventDefault();
-    const faviconUrl = document.querySelector("#faviconUrl").value || DEFAULT_FAVICON_URL;
+    const rawUrl = document.querySelector("#faviconUrl").value || DEFAULT_FAVICON_URL;
+    let faviconUrl;
+    try {
+        faviconUrl = new URL(rawUrl).href;
+    } catch (_) {
+        const status = document.querySelector("#status");
+        status.textContent = "Invalid URL – please enter a valid https:// address.";
+        setTimeout(() => { status.textContent = ""; }, 3000);
+        return;
+    }
     browser.storage.sync.set({ faviconUrl }).then(() => {
         const status = document.querySelector("#status");
         status.textContent = "Options saved.";

@@ -10,7 +10,7 @@ function makeFixFavicon(faviconUrl) {
 }
 
 browser.storage.sync.get({ faviconUrl: DEFAULT_FAVICON_URL }).then((result) => {
-    const fixFavicon = makeFixFavicon(result.faviconUrl || DEFAULT_FAVICON_URL);
+    const fixFavicon = makeFixFavicon(result.faviconUrl);
 
     fixFavicon();
 

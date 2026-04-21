@@ -6,6 +6,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Build artefacts
+# Build artifacts
 *.zip
 *.xpi
