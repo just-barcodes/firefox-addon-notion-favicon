@@ -27,6 +27,12 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
 
+      - name: Lint JSON files
+        run: |
+          for f in manifest.json package.json; do
+            python3 -m json.tool "$f" > /dev/null && echo "$f: valid"
+          done
+
       - name: Install dependencies
         run: npm ci
 
