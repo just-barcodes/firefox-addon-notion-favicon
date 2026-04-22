@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
   "scripts": {
+    "lint": "zip -r /tmp/addon-lint.zip manifest.json src/ && addons-linter /tmp/addon-lint.zip",
     "test": "jest --coverage"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "testMatch": ["**/tests/**/*.test.js"]
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   },
   "homepage": "https://addons.mozilla.org/en-US/firefox/addon/static-notion-favicon/",
   "devDependencies": {
+    "addons-linter": "^9.9.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0"
   }
