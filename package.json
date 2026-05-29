@@ -24,7 +24,7 @@
   },
   "homepage": "https://addons.mozilla.org/en-US/firefox/addon/static-notion-favicon/",
   "devDependencies": {
-    "addons-linter": "^10.5.0",
+    "addons-linter": "^10.6.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1"
   }
