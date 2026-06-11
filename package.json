@@ -1,6 +1,6 @@
 {
   "name": "firefox-addon-notion-favicon",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
   "scripts": {
     "lint": "zip -r /tmp/addon-lint.zip manifest.json src/ icons/ && addons-linter /tmp/addon-lint.zip",

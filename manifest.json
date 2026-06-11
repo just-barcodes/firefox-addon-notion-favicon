@@ -1,6 +1,6 @@
 {
     "name": "notion-favicon",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "manifest_version": 2,
     "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
     "homepage_url": "https://github.com/just-barcodes/firefox-addon-notion-favicon",
