@@ -7,8 +7,8 @@ on:
     branches: ["**"]
   workflow_dispatch:
     inputs:
-      tag:
-        description: "Release tag (e.g. v1.0.0)"
+      version:
+        description: "Release version (e.g. 1.5.0)"
         required: true
 
 jobs:
@@ -49,9 +49,25 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      VERSION: ${{ github.event.inputs.version }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Bump versions
+        run: |
+          npm version "$VERSION" --no-git-tag-version
+          sed -i "s/\"version\": \".*\"/\"version\": \"$VERSION\"/" manifest.json
+
+      - name: Commit and push version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest.json package.json package-lock.json
+          git commit -m "Release v$VERSION"
+          git push
 
       - name: Package addon
         run: zip -r notion-favicon.zip manifest.json src/ icons/
@@ -60,7 +76,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.event.inputs.tag }}" \
+          gh release create "v$VERSION" \
             notion-favicon.zip \
-            --title "${{ github.event.inputs.tag }}" \
+            --title "v$VERSION" \
+            --target "$(git rev-parse HEAD)" \
             --generate-notes
