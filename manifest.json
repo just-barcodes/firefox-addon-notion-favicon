@@ -4,6 +4,10 @@
     "manifest_version": 2,
     "description": "Always display the default Notion favicon instead of switching the favicon to the icon of the currently activated page.",
     "homepage_url": "https://github.com/just-barcodes/firefox-addon-notion-favicon",
+    "icons": {
+        "48": "icons/icon-48.png",
+        "96": "icons/icon-96.png"
+    },
     "content_scripts": [
         {
             "matches": ["https://www.notion.so/*"],

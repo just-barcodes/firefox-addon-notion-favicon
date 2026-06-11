@@ -54,7 +54,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Package addon
-        run: zip -r notion-favicon.zip manifest.json src/
+        run: zip -r notion-favicon.zip manifest.json src/ icons/
 
       - name: Create GitHub release
         env:
