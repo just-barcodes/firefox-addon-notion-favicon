@@ -48,6 +48,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
+      attestations: write
 
     env:
       VERSION: ${{ github.event.inputs.version }}
@@ -71,6 +73,11 @@ jobs:
 
       - name: Package addon
         run: zip -r notion-favicon.zip manifest.json src/ icons/
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: notion-favicon.zip
 
       - name: Create GitHub release
         env:
