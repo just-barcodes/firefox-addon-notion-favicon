@@ -29,7 +29,3 @@ Unit tests cover `fix_favicon.js` and `options.js` using [Jest](https://jestjs.i
 npm install
 npm test
 ```
-
-## TODOs
-
-- Create an icon for this addon.
