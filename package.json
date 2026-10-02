@@ -26,6 +26,6 @@
   "devDependencies": {
     "addons-linter": "^10.13.0",
     "jest": "^30.5.2",
-    "jest-environment-jsdom": "^30.5.1"
+    "jest-environment-jsdom": "^30.5.2"
   }
 }
